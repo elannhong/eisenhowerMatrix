@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="utc-8" name = "viewport" content="width=device-width,initial-scale=1.0">
+        <title>eisenhowerMatrix</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <header class="site-header">
+            <h1>Eisenhower Matrix Todo List</h1>
+        </header>
+
+        <div class="input-wrapper">
+            <input type="text" id="task-input" placeholder="Enter your task">
+        </div>
+
+        <main>
+            <div class="matrix-wrapper">
+                <div></div>
+                <div class="top-label">Urgent</div>
+                <div class="top-label">Not Urgent</div>
+
+                <div class="side-label">Important</div>
+                <div class="quadrant" id="U-I">
+                    
+                </div>
+                <div class="quadrant" id="notU-I">
+                 
+                </div>
+                
+                <div class="side-label">Not Important</div>
+                <div class="quadrant" id="U-notI">
+                 
+                </div>
+                <div class="quadrant" id="notU-notI">
+        
+                </div>
+            </div>
+        </main>
+        <section>
+            <button id="add-button">add task</button>
+        </section>
+        
+        <script src="events.js"></script>
+    </body>
+</html>
