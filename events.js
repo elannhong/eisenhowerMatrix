@@ -1,6 +1,6 @@
 let addButton = document.querySelector("#add-button");
 let input = document.querySelector("#task-input");
-let taskbox = document.querySelector("#taskbox");
+let taskbox = document.querySelector(".taskbox");
 
 addButton.addEventListener("click",()=>{
     input.style.display = "block";
@@ -9,35 +9,52 @@ addButton.addEventListener("click",()=>{
     
 })
 
-document.querySelector("html").addEventListener("keydown", e=>{
-    if(e.key=='Enter'){
+document.querySelector("html").addEventListener("keydown", e => {
+    if (e.key === 'Enter') {
         input.style.display = "none";
+        taskbox.style.display = "flex";
+        
+        // Clone the first .taskbox
+        const tasktemplate = document.querySelector('.taskbox');
+        const newtask = tasktemplate.cloneNode(true);
+        newtask.classList.add('taskbox'); // ensure class is present
+        newtask.textContent = input.value; // set text
+        newtask.style.left = '';
+        newtask.style.top = '';
+        // Attach drag logic to new taskbox
+        newtask.addEventListener("mousedown", dragStart);
+        tasktemplate.parentNode.insertBefore(newtask, tasktemplate.nextSibling);
+        tasktemplate.style.display = "none";
     }
-})
-let isDragging = false;
-let offsetX, offsetY;
-
-
-taskbox.style.left = taskbox.offsetLeft + "px";
-taskbox.style.top = taskbox.offsetTop + "px";
-
-taskbox.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    // Calculate offset between mouse and top-left corner of taskbox
-    offsetX = e.clientX - taskbox.offsetLeft;
-    offsetY = e.clientY - taskbox.offsetTop;
-    // Prevent text selection while dragging
-    e.preventDefault();
 });
 
+
+
+let isDragging = false;
+let dragTarget = null;
+let offsetX, offsetY;
+
+function dragStart(e) {
+    isDragging = true;
+    dragTarget = e.target;
+    offsetX = e.clientX - dragTarget.offsetLeft;
+    offsetY = e.clientY - dragTarget.offsetTop;
+    dragTarget.style.cursor = "grabbing";
+    e.preventDefault();
+}
+
 document.addEventListener("mousemove", (e) => {
-    if (isDragging) {
-        // Move taskbox to follow the mouse, minus the offset
-        taskbox.style.left = (e.clientX - offsetX) + "px";
-        taskbox.style.top = (e.clientY - offsetY) + "px";
+    if (isDragging && dragTarget) {
+        dragTarget.style.left = (e.clientX - offsetX) + "px";
+        dragTarget.style.top = (e.clientY - offsetY) + "px";
     }
 });
 
 document.addEventListener("mouseup", () => {
+    if (dragTarget) dragTarget.style.cursor = "grab";
     isDragging = false;
+    dragTarget = null;
 });
+
+// Attach drag logic to the original taskbox
+taskbox.addEventListener("mousedown", dragStart);

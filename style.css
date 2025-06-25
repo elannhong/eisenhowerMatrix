@@ -103,13 +103,16 @@ box-shadow:
     background: #fff;
 }
 
-#taskbox{
-    display: inline-block;
+.taskbox {
+    display: none;
     position: absolute;
+    left: 45%;
+    top: 48%;
     background-color: rgb(231, 231, 231);
     border-radius: 6px;
-    cursor:grab;
-    font-size: 15px;
+    cursor: grab;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 10px;
 }
 
