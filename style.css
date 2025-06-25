@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     font-family:CustomFont;
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .matrix-wrapper{
@@ -49,11 +49,8 @@
 
 .quadrant{
     border: 2px solid #ccc;
-    min-height: 100px;
-    padding: 1rem;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
+    min-height: 200px;
+    min-width: 200px;
 }
 
 #add-button {
@@ -104,6 +101,16 @@ box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
     background: #fff;
+}
+
+#taskbox{
+    display: inline-block;
+    position: absolute;
+    background-color: rgb(231, 231, 231);
+    border-radius: 6px;
+    cursor:grab;
+    font-size: 15px;
+    padding: 10px;
 }
 
 @font-face {
