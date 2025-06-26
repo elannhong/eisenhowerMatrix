@@ -1,8 +1,11 @@
 .site-header{
-    font-family:CustomFont;
-    font-size: 16px; /* smaller font */
-    padding: 4px 0;  /* less vertical padding */
-    margin-bottom: 0; /* remove extra space below */
+  display: flex;
+  justify-content: space-between;  
+  font-family:CustomFont;
+  font-size: 25px; /* smaller font */
+  padding: 4px 0;  /* less vertical padding */
+  margin-bottom: 0; /* remove extra space below */
+  border-bottom: 1px solid hsl(0, 2%, 49%);
 }
 
 .site-header h4 {
@@ -11,6 +14,9 @@
     line-height: 1.2;
 }
 
+.about-nav{
+  padding-right: 50px;
+}
 .main-flex-container {
   display: flex;
   flex-direction: row;
