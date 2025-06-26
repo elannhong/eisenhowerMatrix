@@ -1,6 +1,7 @@
 let addButton = document.querySelector("#add-button");
 let input = document.querySelector("#task-input");
 let taskbox = document.querySelector(".taskbox");
+let delBlock = document.querySelector(".delete-box");
 
 addButton.addEventListener("click",()=>{
     input.style.display = "block";
@@ -40,17 +41,38 @@ function dragStart(e) {
     e.preventDefault();
 }
 
+let isOverBlock = false;
 document.addEventListener("mousemove", (e) => {
     if (isDragging && dragTarget) {
         dragTarget.style.left = (e.clientX - offsetX) + "px";
         dragTarget.style.top = (e.clientY - offsetY) + "px";
     }
+    const dragRect = dragTarget.getBoundingClientRect();
+    const blockRect = delBlock.getBoundingClientRect();
+    isOverBlock = (
+        dragRect.left<blockRect.right &&
+        dragRect.top<blockRect.bottom &&
+        dragRect.bottom>blockRect.top &&
+        dragRect.right>blockRect.left
+    )
+
+    if (isOverBlock) {
+        delBlock.style.background = "rgb(255, 0, 0)#"; // Highlight when over
+    } 
+    else {
+        delBlock.style.background = ""; 
+    }
 });
 
 document.addEventListener("mouseup", () => {
     if (dragTarget) dragTarget.style.cursor = "grab";
+    if(isOverBlock){
+        dragTarget.remove();
+    }
     isDragging = false;
     dragTarget = null;
+    isOverBlock = false;
+    delBlock.style.background = ""; // Reset highlight
 });
 
 // Attach drag logic to the original taskbox

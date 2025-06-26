@@ -134,6 +134,25 @@ box-shadow:
     padding: 10px;
 }
 
+.delete-box{
+  display: block;
+  width: 150px;
+  background-color: rgb(236, 126, 126);
+  color: white;
+  border: none;
+  padding: 3em 1em;
+  border-radius: 6px;
+  font-size: 1.1em;
+  margin: 0;
+  margin-top: 0;
+  align-self: flex-block;
+  position: absolute;
+  right: 10px;
+  top: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
 @font-face {
   font-family: "CustomFont";
   src: url("Zain/Zain-Light.ttf") format("truetype");
