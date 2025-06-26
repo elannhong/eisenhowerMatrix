@@ -57,10 +57,10 @@ document.addEventListener("mousemove", (e) => {
     )
 
     if (isOverBlock) {
-        delBlock.style.background = "rgb(255, 0, 0)#"; // Highlight when over
+        delBlock.classList.add("hover"); // Add hover class
     } 
     else {
-        delBlock.style.background = ""; 
+        delBlock.classList.remove("hover"); // Remove hover class
     }
 });
 
@@ -72,7 +72,7 @@ document.addEventListener("mouseup", () => {
     isDragging = false;
     dragTarget = null;
     isOverBlock = false;
-    delBlock.style.background = ""; // Reset highlight
+    delBlock.classList.remove("hover"); // Always remove hover class
 });
 
 // Attach drag logic to the original taskbox

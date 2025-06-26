@@ -14,9 +14,18 @@
     line-height: 1.2;
 }
 
-.about-nav{
-  padding-right: 50px;
+.about-nav a{
+  margin-right:50px;
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid #ffffff;
+  transition: 0.2s;
 }
+
+.about-nav a:hover{
+  border-bottom: 1px solid #000000;
+}
+
 .main-flex-container {
   display: flex;
   flex-direction: row;
@@ -156,8 +165,14 @@ box-shadow:
   right: 10px;
   top: 200px;
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
+/* Add hover effect for delete box when dragging over */
+.delete-box.hover {
+  background-color: #e74c3c !important;
+  box-shadow: 0 0 16px 2px #e74c3c44;
+}
 
 @font-face {
   font-family: "CustomFont";
