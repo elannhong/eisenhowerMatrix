@@ -23,6 +23,7 @@ document.querySelector("html").addEventListener("keydown", e => {
         newtask.style.top = '';
         // Attach drag logic to new taskbox
         newtask.addEventListener("mousedown", dragStart);
+        newtask.addEventListener("touchstart", dragStartTouch); // Add this line
         tasktemplate.parentNode.insertBefore(newtask, tasktemplate.nextSibling);
         tasktemplate.style.display = "none";
     }
@@ -75,5 +76,56 @@ document.addEventListener("mouseup", () => {
     delBlock.classList.remove("hover"); // Always remove hover class
 });
 
+// Touch event helpers
+function getTouchPos(e) {
+    if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+}
+
+function dragStartTouch(e) {
+    const pos = getTouchPos(e);
+    isDragging = true;
+    dragTarget = e.target;
+    offsetX = pos.x - dragTarget.offsetLeft;
+    offsetY = pos.y - dragTarget.offsetTop;
+    dragTarget.style.cursor = "grabbing";
+    e.preventDefault();
+}
+
+document.addEventListener("touchmove", (e) => {
+    if (isDragging && dragTarget) {
+        const pos = getTouchPos(e);
+        dragTarget.style.left = (pos.x - offsetX) + "px";
+        dragTarget.style.top = (pos.y - offsetY) + "px";
+        const dragRect = dragTarget.getBoundingClientRect();
+        const blockRect = delBlock.getBoundingClientRect();
+        isOverBlock = (
+            dragRect.left < blockRect.right &&
+            dragRect.top < blockRect.bottom &&
+            dragRect.bottom > blockRect.top &&
+            dragRect.right > blockRect.left
+        );
+        if (isOverBlock) {
+            delBlock.classList.add("hover");
+        } else {
+            delBlock.classList.remove("hover");
+        }
+    }
+}, { passive: false });
+
+document.addEventListener("touchend", () => {
+    if (dragTarget) dragTarget.style.cursor = "grab";
+    if (isOverBlock && dragTarget) {
+        dragTarget.remove();
+    }
+    isDragging = false;
+    dragTarget = null;
+    isOverBlock = false;
+    delBlock.classList.remove("hover");
+});
+
 // Attach drag logic to the original taskbox
 taskbox.addEventListener("mousedown", dragStart);
+taskbox.addEventListener("touchstart", dragStartTouch);
