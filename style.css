@@ -1,18 +1,36 @@
 .site-header{
-    display: flex;
-    justify-content: center;
     font-family:CustomFont;
-    font-size: 15px;
+    font-size: 16px; /* smaller font */
+    padding: 4px 0;  /* less vertical padding */
+    margin-bottom: 0; /* remove extra space below */
 }
 
+.site-header h4 {
+    margin: 0; /* remove default margin from h4 */
+    font-size: 1.1em; /* slightly smaller heading */
+    line-height: 1.2;
+}
+
+.main-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center matrix horizontally */
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Adjust matrix-wrapper to remove right margin and center itself */
 .matrix-wrapper{
     display: grid;
-    grid-template-columns:60px 1fr 1fr;
-    grid-template-rows: 60px 1fr 1fr;
-    width:75vw auto;
-    height:75vh;
+    grid-template-columns:40px 1fr 1fr;
+    grid-template-rows: 40px 1fr 1fr;
+    width:800px;
+    height:500px;
     padding-right: 60px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-right: 0; /* Remove right margin */
+    margin-left: 80px; /* Move matrix further right */
 
     #U-I{
         background-color: rgb(186, 237, 255);
@@ -64,10 +82,10 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background 0.2s, transform 0.15s;
 
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
+  margin: 0;
+  margin-top: 0;
+  margin-left: 40px; /* Space between matrix and button */
+  align-self: flex-start;
 }
 
 #add-button:hover {
@@ -106,12 +124,12 @@ box-shadow:
 .taskbox {
     display: none;
     position: absolute;
-    left: 45%;
-    top: 48%;
+    left: 43.7%;
+    top: 56%;
     background-color: rgb(231, 231, 231);
     border-radius: 6px;
     cursor: grab;
-    font-size: 30px;
+    font-size: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 10px;
 }

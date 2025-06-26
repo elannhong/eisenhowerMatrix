@@ -13,13 +13,12 @@ document.querySelector("html").addEventListener("keydown", e => {
     if (e.key === 'Enter') {
         input.style.display = "none";
         taskbox.style.display = "flex";
-        
         // Clone the first .taskbox
         const tasktemplate = document.querySelector('.taskbox');
         const newtask = tasktemplate.cloneNode(true);
         newtask.classList.add('taskbox'); // ensure class is present
         newtask.textContent = input.value; // set text
-        newtask.style.left = '';
+        newtask.style.left = ''; //reset next task position to default
         newtask.style.top = '';
         // Attach drag logic to new taskbox
         newtask.addEventListener("mousedown", dragStart);
@@ -27,8 +26,6 @@ document.querySelector("html").addEventListener("keydown", e => {
         tasktemplate.style.display = "none";
     }
 });
-
-
 
 let isDragging = false;
 let dragTarget = null;

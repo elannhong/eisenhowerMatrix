@@ -8,7 +8,7 @@
     </head>
     <body class="body">
         <header class="site-header">
-            <h1>Eisenhower Matrix Todo List</h1>
+            <h4>Eisenhower Matrix Todo List</h4>
         </header>
 
         <main>
@@ -18,24 +18,23 @@
             <div class="taskbox-wrapper">
                 <div class="taskbox" draggable="true"></div>
             </div>
-            <div class="matrix-wrapper">
-                <div></div>
-                <div class="top-label">Urgent</div>
-                <div class="top-label">Not Urgent</div>
+            <div class="main-flex-container">
+                <div class="matrix-wrapper">
+                    <div></div>
+                    <div class="top-label">Urgent</div>
+                    <div class="top-label">Not Urgent</div>
 
-                <div class="side-label">Important</div>
-                <div class="quadrant" id="U-I"></div>
-                <div class="quadrant" id="notU-I"></div>
-                
-                <div class="side-label">Not Important</div>
-                <div class="quadrant" id="U-notI"></div>
-                <div class="quadrant" id="notU-notI"></div>
+                    <div class="side-label">Important</div>
+                    <div class="quadrant" id="U-I"></div>
+                    <div class="quadrant" id="notU-I"></div>
+                    
+                    <div class="side-label">Not Important</div>
+                    <div class="quadrant" id="U-notI"></div>
+                    <div class="quadrant" id="notU-notI"></div>
+                </div>
+                <button id="add-button">add task</button>
             </div>
         </main>
-
-        <section>
-            <button id="add-button">add task</button>
-        </section>
         
         <script src="events.js"></script>
     </body>
