@@ -11,7 +11,7 @@ addButton.addEventListener("click",()=>{
 })
 
 document.querySelector("html").addEventListener("keydown", e => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && input.value!='' && input.style.display === "block") {
         input.style.display = "none";
         taskbox.style.display = "flex";
         // Clone the first .taskbox
@@ -23,7 +23,7 @@ document.querySelector("html").addEventListener("keydown", e => {
         newtask.style.top = '';
         // Attach drag logic to new taskbox
         newtask.addEventListener("mousedown", dragStart);
-        newtask.addEventListener("touchstart", dragStartTouch); // Add this line
+        newtask.addEventListener("touchstart", dragStartTouch);
         tasktemplate.parentNode.insertBefore(newtask, tasktemplate.nextSibling);
         tasktemplate.style.display = "none";
     }
